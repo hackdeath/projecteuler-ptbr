@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+{% load mathjax %}
+
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" /> 
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- {% mathjax_scripts %} -->
+        <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script type="text/javascript">
+            {% block javascript %}{% endblock %}
+        </script>
+    </head>
+
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>
+
