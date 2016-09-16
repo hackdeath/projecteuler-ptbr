@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template  import loader
 
 def index(request):
-    template = loader.get_template('translation_portuguese/base.html')
-    context = { }
+    template = loader.get_template('translation_portuguese/index.html')
+    context = {'title': 'Sobre - Project Euler'}
 
     return HttpResponse(template.render(context, request))
