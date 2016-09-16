@@ -1,0 +1,37 @@
+{% extends "translation_portuguese/base.html" %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% block title %}{{ title }}{% endblock %}
+    </head>
+
+    <body>
+        {% block content %}
+        <div>
+            <h2>Problemas</h1>
+            <p>A tabela de problemas mostra os problemas do 1 até o {{ quantidade_problemas }}. Se
+            você gostaria de ir direto aos últimos 10 problemas publicados vá para <a
+                href="/recentes">Problemas recentes</a>.</p>
+
+            <p>Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
+            <div>
+                {% for index in index_list %}
+                <a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
+                {% endfor %}
+            </div>
+
+            <div>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descrição / Título</th>
+                        <th>Resolvido por</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+<

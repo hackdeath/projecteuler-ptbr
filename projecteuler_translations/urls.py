@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^translation_portuguese', include('translation_portuguese.urls')),
+    url(r'^projecteuler/', include('translation_portuguese.urls')),
 ]
