@@ -1,6 +1,6 @@
 # python cache files
-*.pyc
 __pycache__/
+*.pyc
 
 # vim files
 *.swp
