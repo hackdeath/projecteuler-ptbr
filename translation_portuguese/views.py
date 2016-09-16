@@ -1,4 +1,9 @@
-from django.http import HttpResponse
+from django.http      import HttpResponse
+from django.shortcuts import render
+from django.template  import loader
 
 def index(request):
-	return HttpResponse("Index")
+    template = loader.get_template('translation_portuguese/base.html')
+    context = { }
+
+    return HttpResponse(template.render(context, request))
