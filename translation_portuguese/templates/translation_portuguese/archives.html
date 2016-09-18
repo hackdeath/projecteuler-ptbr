@@ -17,9 +17,15 @@
 
             <p>Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
             <div>
-                {% for index in index_list %}
-                <a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
-                {% endfor %}
+                <ul>
+                    {% for index in index_list %}
+                    <li><a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                <span>
+                    Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
+                </span>
             </div>
 
             <div>
@@ -29,7 +35,25 @@
                         <th>Descrição / Título</th>
                         <th>Resolvido por</th>
                     </tr>
+                    {% for problem in problems %}
+                    <tr>
+                        <td>{{ problem.number }}</td>
+                        <td><a href="{% url 'problem' problem.number %}">{{ problem.name }}</a></td>
+                        <td>{{ problem.solved_by }}</td>
+                    </tr>
+                    {% endfor %}
                 </table>
+            </div>
+            <div>
+                <ul>
+                    {% for index in index_list %}
+                    <li><a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                <span>
+                    Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
+                </span>
             </div>
         </div>
         {% endblock %}
