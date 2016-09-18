@@ -32,7 +32,8 @@ def archives(request, pagina = 1):
         'title': titulo,
         'quantidade_problemas': quantidade_problemas, 
         'index_list': lista_de_indices,
-        'problems': problemas
+        'problems': problemas,
+        'current_index': pagina
     }
 
     return HttpResponse(template.render(context, request))

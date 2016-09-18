@@ -9,52 +9,85 @@
 
     <body>
         {% block content %}
-        <div>
-            <h2>Problemas</h1>
-            <p>A tabela de problemas mostra os problemas do 1 até o {{ quantidade_problemas }}. Se
-            você gostaria de ir direto aos últimos 10 problemas publicados vá para <a
-                href="/recentes">Problemas recentes</a>.</p>
+        <div id="container">
+            <div id="header" class="noprint">
+                <div id="nav" class="noprint">
+                    <ul>
+                        <li><a href="{% url 'index' %}" title="Sobre">Sobre</a></li>
+                        <li id="current"><a href="{% url 'archives' 1 %}" title="Problemas">Problemas</a></li>
+                        <li><a href="" title="Recentes">Recentes</a></li>
+                    </ul>
+                </div> <!-- Fim do nav -->                
 
-            <p>Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
-            <div>
-                <ul>
-                    {% for index in index_list %}
-                    <li><a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a></li>
-                    {% endfor %}
-                </ul>
+                <div id="logo" class="noprint">
+                       <div>Project Euler<span>.net</span></div>
+                </div> <!-- Fim da logo -->
+            </div> <!-- Fim do header -->
 
-                <span>
-                    Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
-                </span>
-            </div>
+            <div id="content">
+                <div id="problems_table_page">
+                    <h2>Problemas</h2>
+                    <p>A tabela de problemas mostra os problemas do 1 até o {{ quantidade_problemas }}. Se você gostaria de ir direto aos últimos 10 problemas publicados vá para <a href="/recentes">Problemas recentes</a>.<br />
+                    Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
 
-            <div>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Descrição / Título</th>
-                        <th>Resolvido por</th>
-                    </tr>
-                    {% for problem in problems %}
-                    <tr>
-                        <td>{{ problem.number }}</td>
-                        <td><a href="{% url 'problem' problem.number %}">{{ problem.name }}</a></td>
-                        <td>{{ problem.solved_by }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-            <div>
-                <ul>
-                    {% for index in index_list %}
-                    <li><a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a></li>
-                    {% endfor %}
-                </ul>
+                    <div class="pagination">
+                        {% for index in index_list %}
+                        {% if index == current_index %}
+                        <a class="current" href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
+                        {% else %}
+                        <a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
+                        {% endif %}
+                        {% endfor %}
 
-                <span>
-                    Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
-                </span>
-            </div>
+                        <span>
+                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
+                        </span>
+                    </div> <!-- Fim de pagination -->
+
+                    <div style="clear:both;"></div>
+                    <br />
+
+                    <table id="problems_table" class="grid">
+                        <thead>
+                            <tr>
+                                <th class="id_column"><strong>ID</strong></th>
+                                <th class="title_column">Descrição / Título</th>
+                                <th class="solved_by_column"><strong>Resolvido por</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for problem in problems %}
+                            <tr>
+                                <td class="id_column">{{ problem.number }}</td>
+                                <td><a href="{% url 'problem' problem.number %}">{{ problem.name }}</a></td>
+                                <!-- <td><div style="text-align:center;">{{ problem.solved_by }}</div></td> -->
+                                <td><div style="text-align:center;">x</div></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br />
+                    <div class="pagination">
+                        {% for index in index_list %}
+                        {% if index == current_index %}
+                        <a class="current" href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
+                        {% else %}
+                        <a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
+                        {% endif %}
+                        {% endfor %}
+
+                        <span>
+                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
+                        </span>
+                    </div> <!-- Fim de pagination -->
+
+                    <div style="clear:both;"></div>
+                </div> <!-- Fim de problems_table_page -->
+            </div> <!-- Fim de content -->
+
+            <div id="footer" class="noprint">
+                <p>Project Euler pt-br<br />2016</p>
+            </div> <!-- Fim do footer -->
         </div>
         {% endblock %}
     </body>
