@@ -40,7 +40,7 @@
                         {% endfor %}
 
                         <span>
-                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
+                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}/' + this.value" type="text"></input>
                         </span>
                     </div> <!-- Fim de pagination -->
 
@@ -77,7 +77,7 @@
                         {% endfor %}
 
                         <span>
-                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='problema/'+this.value;" type="text"></input>
+                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}/' + this.value" type="text"></input>
                         </span>
                     </div> <!-- Fim de pagination -->
 
