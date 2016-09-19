@@ -25,7 +25,7 @@ def archives(request, pagina = 1):
     problemas = Question.objects.filter(number__range=(primeiro, ultimo))
 
     if (not problemas):
-        return HttpResponseRedirect(reverse('archives'))
+        return HttpResponseRedirect(reverse('archives_empty'))
 
     template = loader.get_template('translation_portuguese/archives.html')
     context = {
