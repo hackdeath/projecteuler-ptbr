@@ -1,0 +1,53 @@
+{% extends "translation_portuguese/base.html" %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% block title %}{{ title }}{% endblock %}
+    </head>
+
+    <body>
+        {% block content %}
+        <div id="container">
+            <div id="header" class="noprint">
+                <div id="nav" class="noprint">
+                    <ul>
+                        <li><a href="{% url 'index' %}" title="Sobre">Sobre</a></li>
+                        <li id="current"><a href="{% url 'archives' 1 %}" title="Problemas">Problemas</a></li>
+                        <li><a href="" title="Recentes">Recentes</a></li>
+                    </ul>
+                </div> <!-- Fim do nav -->                
+
+                <div id="logo" class="noprint">
+                       <div>Project Euler<span>.net</span></div>
+                </div> <!-- Fim da logo -->
+            </div> <!-- Fim do header -->
+
+            <div id="content">
+                <div style="text-align:center;" class="print">
+                    <img src="images/print_page_logo.png" alt="projecteuler.net" style="border:none;" />
+                </div>
+
+                <h2>{{ problema.name }}</h2>
+
+                <div id="problem_info" class="info">
+                    <h3>Problem 1</h3>
+                    <span>Solved by {{ problema.solved_by }}</span>
+                </div>
+
+                <div class="problem_content" role="problem">
+                    <p>{{ problema.enunciation | safe }}</p>
+                </div>
+                
+                <br />
+                <br />
+            </div> <!-- Fim de content -->
+
+            <div id="footer" class="noprint">
+                <p>Project Euler pt-br<br />2016</p>
+            </div> <!-- Fim do footer -->
+        </div>
+        {% endblock %}
+    </body>
+<

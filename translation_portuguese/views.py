@@ -39,7 +39,12 @@ def archives(request, pagina = 1):
     return HttpResponse(template.render(context, request))
 
 def problem(request, id):
-    template = loader.get_template('translation_portuguese/index.html')
-    context = {'title': 'Sobre - Project Euler'}
+    problema = Question.objects.get(number = id)
+
+    template = loader.get_template('translation_portuguese/problem.html')
+    context = {
+        'title': 'Problem {0} - Project Euler'.format(id),
+        'problema': problema
+    }
 
     return HttpResponse(template.render(context, request))
