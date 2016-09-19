@@ -14,8 +14,8 @@
                 <div id="nav" class="noprint">
                     <ul>
                         <li><a href="{% url 'index' %}" title="Sobre">Sobre</a></li>
-                        <li id="current"><a href="{% url 'archives' 1 %}" title="Problemas">Problemas</a></li>
-                        <li><a href="{% url 'recents' %}" title="Recentes">Recentes</a></li>
+                        <li><a href="{% url 'archives' 1 %}" title="Problemas">Problemas</a></li>
+                        <li id="current"><a href="{% url 'recents' %}" title="Recentes">Recentes</a></li>
                     </ul>
                 </div> <!-- Fim do nav -->                
 
@@ -26,23 +26,9 @@
 
             <div id="content">
                 <div id="problems_table_page">
-                    <h2>Problemas</h2>
-                    <p>A tabela de problemas mostra os problemas do 1 até o {{ quantidade_problemas }}. Se você gostaria de ir direto aos últimos 10 problemas publicados vá para <a href="/recentes">Problemas recentes</a>.<br />
-                    Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
-
-                    <div class="pagination">
-                        {% for index in index_list %}
-                        {% if index == current_index %}
-                        <a class="current" href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
-                        {% else %}
-                        <a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
-                        {% endif %}
-                        {% endfor %}
-
-                        <span>
-                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}/' + this.value" type="text"></input>
-                        </span>
-                    </div> <!-- Fim de pagination -->
+                    <h2>Problemas recentes</h2>
+                    <p>A tabela de problemas recentes mostra os 10 mais novos problemas publicados pelo Project Euler. Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
+                    <p>Se você for novo no Project Euler, você pode querer começar com esses <a href="{% url 'archives' 1 %}">problemas</a> do site.</p>
 
                     <div style="clear:both;"></div>
                     <br />
@@ -67,19 +53,6 @@
                         </tbody>
                     </table>
                     <br />
-                    <div class="pagination">
-                        {% for index in index_list %}
-                        {% if index == current_index %}
-                        <a class="current" href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
-                        {% else %}
-                        <a href="{% url 'archives' index %}" title="Ir à página {{ index }}">{{ index }}</a>
-                        {% endif %}
-                        {% endfor %}
-
-                        <span>
-                            Ir para o problema: <input onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}/' + this.value" type="text"></input>
-                        </span>
-                    </div> <!-- Fim de pagination -->
 
                     <div style="clear:both;"></div>
                 </div> <!-- Fim de problems_table_page -->

@@ -38,6 +38,19 @@ def archives(request, pagina = 1):
 
     return HttpResponse(template.render(context, request))
 
+def recents(request):
+    titulo = 'Problemas recentes - Project Euler'
+    
+    problemas = Question.objects.all().order_by('-number')[:10]
+
+    template = loader.get_template('translation_portuguese/recents.html')
+    context = {
+        'title': titulo,
+        'problems': problemas
+    }
+
+    return HttpResponse(template.render(context, request))
+
 def problem(request, id):
     problema = Question.objects.get(number = id)
 
