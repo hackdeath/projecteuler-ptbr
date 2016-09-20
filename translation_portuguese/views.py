@@ -11,53 +11,52 @@ def index(request):
 
     return HttpResponse(template.render(context, request))
 
-def archives(request, pagina = 1):
-    pagina = int(pagina)
-    quantidade_problemas = Question.objects.count()
-    problemas_por_pagina = 50
+def archives(request, page = 1):
+    page = int(page)
+    amount_problems = Question.objects.count()
+    problems_per_page = 50
 
-    lista_de_indices = range(1, math.ceil(quantidade_problemas / problemas_por_pagina) + 1)
-    titulo = 'Problemas arquivados - Project Euler'
+    index_list = range(1, math.ceil(amount_problems / problems_per_page) + 1)
+    title = 'Problemas arquivados - Project Euler'
 
-    ultimo = pagina * problemas_por_pagina
-    primeiro = ultimo - problemas_por_pagina
+    last = page * problems_per_page # last problem of this page
+    first = last - problems_per_page # first problem of this page
     
-    problemas = Question.objects.filter(number__range=(primeiro, ultimo))
+    problems = Question.objects.filter(number__range=(first, last))
 
-    if (not problemas):
+    if (not problems):
         return HttpResponseRedirect(reverse('archives_empty'))
 
     template = loader.get_template('translation_portuguese/archives.html')
     context = {
-        'title': titulo,
-        'quantidade_problemas': quantidade_problemas, 
-        'index_list': lista_de_indices,
-        'problems': problemas,
-        'current_index': pagina
+        'title': title,
+        'amount_problems': amount_problems, 
+        'index_list': index_list,
+        'problems': problems,
+        'current_index': page
     }
 
     return HttpResponse(template.render(context, request))
 
 def recents(request):
-    titulo = 'Problemas recentes - Project Euler'
-    
-    problemas = Question.objects.all().order_by('-number')[:10]
-
+    title = 'Problemas recentes - Project Euler'    
+    problems = Question.objects.all().order_by('-number')[:10]
     template = loader.get_template('translation_portuguese/recents.html')
+    
     context = {
-        'title': titulo,
-        'problems': problemas
+        'title': title,
+        'problems': problems
     }
 
     return HttpResponse(template.render(context, request))
 
 def problem(request, id):
-    problema = Question.objects.get(number = id)
-
+    problem = Question.objects.get(number = id)
     template = loader.get_template('translation_portuguese/problem.html')
+
     context = {
         'title': 'Problem {0} - Project Euler'.format(id),
-        'problema': problema
+        'problema': problem
     }
 
     return HttpResponse(template.render(context, request))
