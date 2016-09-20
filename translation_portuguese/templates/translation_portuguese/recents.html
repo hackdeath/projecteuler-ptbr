@@ -48,8 +48,7 @@
                             <tr>
                                 <td class="id_column">{{ problem.number }}</td>
                                 <td><a href="{% url 'problem' problem.number %}">{{ problem.name }}</a></td>
-                                <!-- <td><div style="text-align:center;">{{ problem.solved_by }}</div></td> -->
-                                <td><div style="text-align:center;">x</div></td>
+                                <td><div style="text-align:center;">{{ problem.solved_by }}</div></td>
                             </tr>
                             {% endfor %}
                         </tbody>
