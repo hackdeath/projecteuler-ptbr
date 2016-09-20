@@ -51,12 +51,23 @@ def recents(request):
     return HttpResponse(template.render(context, request))
 
 def problem(request, id):
-    problem = Question.objects.get(number = id)
+    previous_problem = Question.objects.filter(number = (int(id) - 1)) 
+    current_problem  = Question.objects.get(number = id)
+    next_problem     = Question.objects.filter(number = (int(id) + 1))
+
+    if (previous_problem):
+        previous_problem = previous_problem[0]
+
+    if (next_problem):
+        next_problem = next_problem[0]
+
     template = loader.get_template('translation_portuguese/problem.html')
 
     context = {
         'title': 'Problem {0} - Project Euler'.format(id),
-        'problem': problem
+        'previous_problem': previous_problem,
+        'current_problem': current_problem,
+        'next_problem': next_problem
     }
 
     return HttpResponse(template.render(context, request))

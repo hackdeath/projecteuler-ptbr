@@ -27,19 +27,44 @@
             </div> <!-- Fim do header -->
 
             <div id="content">
+            <table id="show_problem_table" class="noprint">
+                <tr>
+                    {% if previous_problem %}
+                    <td>
+                        <div id="previous_problem">
+                            <a href="{% url 'problem' previous_problem.number %}" class="info">
+                                <span>Go to problem {{ previous_problem.number }}:<br />&quot;{{ previous_problem.name }}&quot;</span>
+                                <img src="{% static 'translation_portuguese/img/icon_back_solved.png' %}" alt="Previous" />
+                            </a>
+                        </div>
+                    </td>
+                    {% endif %}
+                    {% if next_problem %}
+                    <td>
+                        <div id="next_problem">
+                            <a href="{% url 'problem' next_problem.number %}" class="info">
+                                <span>Go to problem {{ next_problem.number }}:<br />&quot;{{ next_problem.name }}&quot;</span>
+                                <img src="{% static 'translation_portuguese/img/icon_next_solved.png' %}" alt="Next" />
+                            </a>
+                        </div>
+                    </td>
+                {% endif %}
+                </tr>
+            </table>
+
                 <div style="text-align:center;" class="print">
                     <img src="images/print_page_logo.png" alt="projecteuler.net" style="border:none;" />
                 </div>
 
-                <h2>{{ problem.name }}</h2>
+                <h2>{{ current_problem.name }}</h2>
 
                 <div id="problem_info" class="info">
-                    <h3>Problema {{ problem.number }}</h3>
-                    <span>Solved by {{ problem.solved_by }}; Difficulty rating: {{ problem.difficulty }}%</span>
+                    <h3>Problema {{ current_problem.number }}</h3>
+                    <span>Solved by {{ current_problem.solved_by }}; Difficulty rating: {{ current_problem.difficulty }}%</span>
                 </div>
 
                 <div class="problem_content" role="problem">
-                    <p>{{ problem.enunciation | safe }}</p>
+                    <p>{{ current_problem.enunciation | safe }}</p>
                 </div>
                 
                 <br />
