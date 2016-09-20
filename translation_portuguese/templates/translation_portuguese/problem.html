@@ -31,15 +31,15 @@
                     <img src="images/print_page_logo.png" alt="projecteuler.net" style="border:none;" />
                 </div>
 
-                <h2>{{ problema.name }}</h2>
+                <h2>{{ problem.name }}</h2>
 
                 <div id="problem_info" class="info">
-                    <h3><a href="https://projecteuler.net/problem={{ problema.number }}">Problema {{ problema.number }}</a></h3>
-                    <span>Solved by {{ problema.solved_by }}</span>
+                    <h3>Problema {{ problem.number }}</h3>
+                    <span>Solved by {{ problem.solved_by }}; Difficulty rating: {{ problem.difficulty }}%</span>
                 </div>
 
                 <div class="problem_content" role="problem">
-                    <p>{{ problema.enunciation | safe }}</p>
+                    <p>{{ problem.enunciation | safe }}</p>
                 </div>
                 
                 <br />

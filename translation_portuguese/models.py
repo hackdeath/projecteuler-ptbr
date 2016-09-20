@@ -5,6 +5,13 @@ class Question(models.Model):
     name        = models.TextField()
     enunciation = models.TextField()
     solved_by   = models.PositiveSmallIntegerField(default = 0)
+    difficulty  = models.PositiveSmallIntegerField(default = 0)
+    translated  = models.BooleanField(default = False)
 
     def __str__(self):
-        return "{0} - {1}".format(self.number, self.name)
+        if (self.translated):
+            status = "Tradução concluída"
+        else:
+            status = "Esperando tradução"
+
+        return "{0} - {1} ({2})".format(self.number, self.name, status)

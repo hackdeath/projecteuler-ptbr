@@ -56,7 +56,7 @@ def problem(request, id):
 
     context = {
         'title': 'Problem {0} - Project Euler'.format(id),
-        'problema': problem
+        'problem': problem
     }
 
     return HttpResponse(template.render(context, request))
