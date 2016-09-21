@@ -508,6 +508,13 @@ a.anchor {
    text-align:center;
    font-weight:bold;
 }
+#problems_table_page #problems_table th.translated_column {
+   width:100px;
+}
+#problems_table_page #problems_table td.translated_column {
+   height:30px;
+   text-align:center;
+}
 #problems_table_page #problems_table th.title_column {
    width:400px;
 }

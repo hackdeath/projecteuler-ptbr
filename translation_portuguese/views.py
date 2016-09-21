@@ -50,6 +50,18 @@ def recents(request):
 
     return HttpResponse(template.render(context, request))
 
+def contribute(request):
+    title = 'Seja um contribuidor - Project Euler'    
+    problems = Question.objects.all()
+    template = loader.get_template('translation_portuguese/contribute.html')
+    
+    context = {
+        'title': title,
+        'problems': problems
+    }
+
+    return HttpResponse(template.render(context, request))
+
 def problem(request, id):
     previous_problem = Question.objects.filter(number = (int(id) - 1)) 
     current_problem  = Question.objects.get(number = id)

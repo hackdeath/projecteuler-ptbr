@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^problema$', views.problem, name='problem_empty'),
     url(r'^problema=(?P<id>\d+)$', views.problem, name='problem'),
     url(r'^recentes$', views.recents, name='recents'),
+    url(r'^contribuir$', views.contribute, name='contribute'),
 ]

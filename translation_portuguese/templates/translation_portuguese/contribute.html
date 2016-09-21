@@ -17,8 +17,8 @@
                     <ul>
                         <li>             <a href="{% url 'index' %}"      title="Sobre">    Sobre</a></li>
                         <li>             <a href="{% url 'archives' 1 %}" title="Problemas">Problemas</a></li>
-                        <li id="current"><a href="{% url 'recents' %}"    title="Recentes"> Recentes</a></li>
-                        <li>             <a href="{% url 'contribute' %}" title="Contribua">Contribua</a></li>
+                        <li>             <a href="{% url 'recents' %}"    title="Recentes"> Recentes</a></li>
+                        <li id="current"><a href="{% url 'contribute' %}" title="Contribua">Contribua</a></li>
                     </ul>
                 </div> <!-- Fim do nav -->                
 
@@ -29,9 +29,8 @@
 
             <div id="content">
                 <div id="problems_table_page">
-                    <h2>Problemas recentes</h2>
-                    <p>A tabela de problemas recentes mostra os 10 mais novos problemas publicados pelo Project Euler. Clique na descrição/título do problema para ver mais detalhes e submeter sua resposta.</p>
-                    <p>Se você for novo no Project Euler, você pode querer começar com esses <a href="{% url 'archives' 1 %}">problemas</a> do site.</p>
+                    <h2>Contribua conosco!</h2>
+                    <p>Ainda não temos todas as questões em português. Para isso, precisamos de sua ajuda! Clique em alguma questão abaixo que ainda está em inglês e submeta sua tradução. Você não precisa fazer nenhum cadastro, apenas submeta sua tradução, informe seu nome, e espere a aceitação.</p>
 
                     <div style="clear:both;"></div>
                     <br />
@@ -41,7 +40,7 @@
                             <tr>
                                 <th class="id_column"><strong>ID</strong></th>
                                 <th class="title_column">Descrição / Título</th>
-                                <th class="solved_by_column"><strong>Resolvido por</strong></th>
+                                <th class="translated_column"><strong>Traduzido</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,7 +48,13 @@
                             <tr>
                                 <td class="id_column">{{ problem.number }}</td>
                                 <td><a href="{% url 'problem' problem.number %}">{{ problem.name }}</a></td>
-                                <td><div style="text-align:center;">{{ problem.solved_by }}</div></td>
+                                <td class="translated_column">
+                                    {% if problem.translated %}
+                                        <div style="text-align:center;"><input type="checkbox" value="Translated" disabled checked></div>
+                                    {% else %}
+                                        <div style="text-align:center;"><input type="checkbox" value="Translated" disabled></div>
+                                    {% endif %}
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
