@@ -15,3 +15,8 @@ class Question(models.Model):
             status = "Esperando tradução"
 
         return "{0} - {1} ({2})".format(self.number, self.name, status)
+
+class Translation(models.Model):
+    number_question = models.ForeignKey('Question', on_delete=models.CASCADE)
+    author = models.CharField(max_length=50)
+    translation = models.TextField()
