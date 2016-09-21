@@ -40,7 +40,7 @@ def archives(request, page = 1):
 
 def recents(request):
     title = 'Problemas recentes - Project Euler'    
-    problems = Question.objects.all().order_by('-number')[:10][::-1]
+    problems = Question.objects.all().order_by('-number')[:10]
     template = loader.get_template('translation_portuguese/recents.html')
     
     context = {
