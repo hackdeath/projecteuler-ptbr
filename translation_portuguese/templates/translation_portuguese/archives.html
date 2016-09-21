@@ -42,8 +42,8 @@
                         {% endfor %}
 
                         <span>
-                            Ir para o problema: <input id="jump_top" style="width:30px;" onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}=this.value" type="text"></input>
-                        </span>
+                            Ir para o problema: <input id="jump_top" style="width:30px;" onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}=' + this.value" type="text"></input>
+                            </span>
                     </div> <!-- Fim de pagination -->
 
                     <div style="clear:both;"></div>
@@ -79,7 +79,7 @@
                         {% endfor %}
 
                         <span>
-                            Ir para o problema: <input id="jump_top" style="width:30px;" onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}=this.value" type="text"></input>
+                            Ir para o problema: <input id="jump_top" style="width:30px;" onkeypress="if (event.keyCode == 13) location.href='{% url 'problem_empty' %}=' + this.value" type="text"></input>
                         </span>
                     </div> <!-- Fim de pagination -->
 
