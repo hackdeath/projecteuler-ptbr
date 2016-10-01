@@ -18,5 +18,7 @@ class Question(models.Model):
 
 class Translation(models.Model):
     number_question = models.ForeignKey('Question', on_delete=models.CASCADE)
-    author = models.CharField(max_length=50)
-    translation = models.TextField()
+    author          = models.CharField(max_length=50)
+    translation     = models.TextField()
+    positive_votes  = models.IntegerField(default = 0)
+    negative_votes  = models.IntegerField(default = 0)

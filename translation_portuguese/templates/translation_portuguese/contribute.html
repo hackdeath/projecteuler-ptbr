@@ -47,7 +47,7 @@
                             {% for problem in problems %}
                             <tr>
                                 <td class="id_column">{{ problem.number }}</td>
-                                <td><a href="{% url 'problem' problem.number %}">{{ problem.name }}</a></td>
+                                <td><a href="{% url 'translate' problem.number %}">{{ problem.name }}</a></td>
                                 <td class="translated_column">
                                     {% if problem.translated %}
                                         <div style="text-align:center;"><input type="checkbox" value="Translated" disabled checked></div>

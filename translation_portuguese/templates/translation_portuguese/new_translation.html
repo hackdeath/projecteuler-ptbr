@@ -1,0 +1,51 @@
+{% extends "translation_portuguese/base.html" %}
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% block title %}{{ title }}{% endblock %}
+    </head>
+
+    <body>
+        {% block content %}
+        <div id="container">
+            <div id="header" class="noprint">
+                <div id="nav" class="noprint">
+                    <ul>
+                        <li><a href="{% url 'index' %}"      title="Sobre">    Sobre</a></li>
+                        <li><a href="{% url 'archives' 1 %}" title="Problemas">Problemas</a></li>
+                        <li><a href="{% url 'recents' %}"    title="Recentes"> Recentes</a></li>
+                        <li><a href="{% url 'contribute' %}" title="Contribua">Contribua</a></li>
+                    </ul>
+                </div> <!-- Fim do nav -->                
+
+                <div id="logo" class="noprint" style="background-image: url({% static 'translation_portuguese/img/pe_logo_default.png' %})">
+                       <div>Project Euler<span>.net</span></div>
+                </div> <!-- Fim da logo -->
+            </div> <!-- Fim do header -->
+
+            <div id="content">
+                <div style="text-align:center;" class="print">
+                    <img src="images/print_page_logo.png" alt="projecteuler.net" style="border:none;" />
+                </div>
+
+                <h2>{{ problem.name }}</h2>
+
+                <div id="problem_info" class="info">
+                   {{ form }}
+                </div>
+                
+                <br />
+                <br />
+            </div> <!-- Fim de content -->
+
+            <div id="footer" class="noprint">
+                <p>Project Euler pt-br<br />2016</p>
+            </div> <!-- Fim do footer -->
+        </div>
+        {% endblock %}
+    </body>
+<

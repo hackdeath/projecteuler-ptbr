@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.template  import loader
 from django.urls      import reverse
 from .models          import Question
+from .forms           import TranslationForm
 import math
+
 
 def index(request):
     template = loader.get_template('translation_portuguese/index.html')
@@ -82,4 +84,17 @@ def problem(request, id):
         'next_problem': next_problem
     }
 
+    return HttpResponse(template.render(context, request))
+
+def translate(request, id):
+    question     = Question.objects.get(id = id)
+    initial_data = {'number_question': question.number, 'translation': question.enunciation}
+    form         = TranslationForm(initial = initial_data)
+    template     = loader.get_template('translation_portuguese/new_translation.html')
+    context = {
+        'title': 'Tradução - Project Euler',
+        'form': form,
+        'problem': problem
+    }
+    
     return HttpResponse(template.render(context, request))

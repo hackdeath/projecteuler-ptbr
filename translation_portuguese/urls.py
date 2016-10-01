@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^problema=(?P<id>\d+)$', views.problem, name='problem'),
     url(r'^recentes$', views.recents, name='recents'),
     url(r'^contribuir$', views.contribute, name='contribute'),
+    url(r'^traducao=(?P<id>\d+)$', views.translate, name='translate'),
 ]
