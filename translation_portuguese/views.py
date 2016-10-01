@@ -87,8 +87,8 @@ def problem(request, id):
     return HttpResponse(template.render(context, request))
 
 def translate(request, id):
-    question     = Question.objects.get(id = id)
-    initial_data = {'number_question': question.number, 'translation': question.enunciation}
+    problem     = Question.objects.get(id = id)
+    initial_data = {'number_question': problem.number, 'translation': problem.enunciation}
     form         = TranslationForm(initial = initial_data)
     template     = loader.get_template('translation_portuguese/new_translation.html')
     context = {

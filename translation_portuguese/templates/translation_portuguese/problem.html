@@ -28,30 +28,30 @@
             </div> <!-- Fim do header -->
 
             <div id="content">
-            <table id="show_problem_table" class="noprint">
-                <tr>
-                    {% if previous_problem %}
-                    <td>
-                        <div id="previous_problem">
-                            <a href="{% url 'problem' previous_problem.number %}" class="info">
-                                <span>Go to problem {{ previous_problem.number }}:<br />&quot;{{ previous_problem.name }}&quot;</span>
-                                <img src="{% static 'translation_portuguese/img/icon_back_solved.png' %}" alt="Previous" />
-                            </a>
-                        </div>
-                    </td>
+                <table id="show_problem_table" class="noprint">
+                    <tr>
+                        {% if previous_problem %}
+                        <td>
+                            <div id="previous_problem">
+                                <a href="{% url 'problem' previous_problem.number %}" class="info">
+                                    <span>Go to problem {{ previous_problem.number }}:<br />&quot;{{ previous_problem.name }}&quot;</span>
+                                    <img src="{% static 'translation_portuguese/img/icon_back_solved.png' %}" alt="Previous" />
+                                </a>
+                            </div>
+                        </td>
+                        {% endif %}
+                        {% if next_problem %}
+                        <td>
+                            <div id="next_problem">
+                                <a href="{% url 'problem' next_problem.number %}" class="info">
+                                    <span>Go to problem {{ next_problem.number }}:<br />&quot;{{ next_problem.name }}&quot;</span>
+                                    <img src="{% static 'translation_portuguese/img/icon_next_solved.png' %}" alt="Next" />
+                                </a>
+                            </div>
+                        </td>
                     {% endif %}
-                    {% if next_problem %}
-                    <td>
-                        <div id="next_problem">
-                            <a href="{% url 'problem' next_problem.number %}" class="info">
-                                <span>Go to problem {{ next_problem.number }}:<br />&quot;{{ next_problem.name }}&quot;</span>
-                                <img src="{% static 'translation_portuguese/img/icon_next_solved.png' %}" alt="Next" />
-                            </a>
-                        </div>
-                    </td>
-                {% endif %}
-                </tr>
-            </table>
+                    </tr>
+                </table>
 
                 <div style="text-align:center;" class="print">
                     <img src="images/print_page_logo.png" alt="projecteuler.net" style="border:none;" />
