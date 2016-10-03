@@ -88,8 +88,14 @@ def problem(request, id):
 
 def translate(request, id):
     problem     = Question.objects.get(id = id)
-    initial_data = {'number_question': problem.number, 'translation': problem.enunciation}
+
+    initial_data = {
+        'number_question': problem.number, 
+        'translation':     problem.enunciation,
+        'name':            problem.name,
+    }
     form         = TranslationForm(initial = initial_data)
+    
     template     = loader.get_template('translation_portuguese/new_translation.html')
     context = {
         'title': 'Tradução - Project Euler',
