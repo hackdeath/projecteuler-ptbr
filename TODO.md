@@ -1,5 +1,6 @@
 - [x] Banco de dados para organização de questões
+- [x] Exibição agradável de questões e informações na tela
 - [ ] Views para tratamentos dos dados
 - [ ] Possibilidade de contribuição de traduções
-- [ ] Exibição agradável de questões e informações na tela
-- [ ] Responsividade
+- [ ] Votação em traduções para eleição da melhor
+- [ ] Comentários em questões (sem permissão de comentar a resposta)
